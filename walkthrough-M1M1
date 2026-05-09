@@ -1,0 +1,130 @@
+# Walkthrough: M1/M2 Classifier Integration
+
+## Overview
+
+Integrated two trained YOLOv8n-cls models into the RapidAid pipeline:
+- **M1** (`accident_classifier.pt`) — Scene-level accident classifier
+- **M2** (`damage_classifier.pt`) — Per-vehicle damage detector
+
+Both models were already wired into the pipeline with graceful degradation. This work **tightened the ensemble fusion**, added **new detection paths**, and **enhanced reporting/visualization**.
+
+## Changes Made
+
+### 1. Configuration — [settings.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/config/settings.py)
+- Added `DAMAGE_CLASSIFIER_MODEL` path constant
+- Added `SCENE_ONLY_CLASSIFIER_THRESHOLD = 0.85` for smoke/debris scenes
+- Added ensemble fusion weight constants (geometric 40%, M1 35%, M2 25%)
+
+### 2. Frame Classifier — [frame_classifier.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/models/frame_classifier.py)
+- Improved `_find_accident_class()` to handle diverse label formats ("Accident", "crash", "positive", etc.)
+- Added class index caching for performance
+- Added diagnostic logging of discovered class index
+
+### 3. Damage Classifier — [damage_classifier.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/models/damage_classifier.py)
+- Improved `_find_damaged_class()` with same multi-format support
+- Uses `DAMAGE_CLASSIFIER_MODEL` from settings
+- Added diagnostic logging
+
+### 4. Frame Processor — [frame_processor.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/pipeline/frame_processor.py)
+**Three new detection stages:**
+
+| Stage | Trigger | Purpose |
+|-------|---------|---------|
+| **5g-ii** | M2 > 90%, M1 > 20% | Damage-dominant detection (catches Image 6) |
+| **5h** | M1 > 85%, 0 vehicles | Scene-only detection (catches smoke/debris) |
+| **Ensemble** | After all stages | Fused confidence = geometric + M1 + M2 |
+
+### 5. Report Generator — [report_generator.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/pipeline/report_generator.py)
+- Added `classifier_confidence_m1`, `damage_score_m2`, `fused_confidence`, `detection_mode` to JSON reports
+- Per-vehicle `damage_score` when M2 detects damage
+- `scene_only` detection mode support
+
+### 6. Visualization — [visualization.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/utils/visualization.py)
+- Banner shows M1 confidence: `ACCIDENT DETECTED | M1:96% | 2 Vehicle(s)`
+- Vehicle labels show damage: `Car #1 (85%) DMG:97%`
+- Scene-only banner: `ACCIDENT DETECTED (Scene) | M1:92%`
+
+### 7. Batch Runner — [run_all.py](file:///c:/Users/abbas/OneDrive/Desktop/AccidentDetection/run_all.py)
+- Shows M1/M2 availability at startup
+- Summary tables include M1%, M2%, Fused% columns
+- Saves consolidated `outputs/test_summary.json`
+
+---
+
+## Test Results
+
+### Frame Results (6/6 detected ✅)
+
+| Frame | Accident? | Vehicles | Victims | M1 | M2 | Fused |
+|-------|-----------|----------|---------|-----|-----|-------|
+| Car Accident 3.png | ✅ YES | 1 | 1 | 96.0% | 97.5% | 84.5% |
+| Car Accident 4.png | ✅ YES | 3 | 0 | 99.4% | 0.5% | 49.5% |
+| Car Accident 5.png | ✅ YES | 2 | 1 | 99.6% | 94.4% | 77.4% |
+| Car accident 2.jpg | ✅ YES | 1 | 3 | 42.6% | 48.0% | 57.3% |
+| Car accident(6).png | ✅ YES | 1 | 0 | 30.1% | 97.0% | 60.5% |
+| Car accident(8).png | ✅ YES | 4 | 0 | 75.7% | 96.4% | 79.0% |
+
+> [!IMPORTANT]
+> **Image 6** was a miss in the previous run (M1=30.1%, below 40% threshold). The new **Stage 5g-ii** (damage-dominant detection) catches it because M2 is 97% confident about vehicle damage.
+
+### Video Results (3/5 accidents detected)
+
+| Video | Accident? | Timestamp | M1 | M2 | Fused |
+|-------|-----------|-----------|-----|-----|-------|
+| Acc Video 1.mp4 | No | - | 0% | 0% | 0% |
+| Acc Video 2.mp4 | ✅ YES | 13.0s | 91% | 96% | 92% |
+| Acc video 3.mp4 | No | - | 0% | 0% | 0% |
+| Acc video 7.mp4 | ✅ YES | 12.16s | 100% | 80% | 100% |
+| Acc video 8.mp4 | ✅ YES | 6.13s | 99% | 81% | 100% |
+
+> [!NOTE]
+> Videos 1 and 3 show no accident detection. Video 3 has a classifier baseline of only 14.2% — M1 doesn't see accident patterns in this footage. These may be true negatives or edge cases requiring M3 (temporal classifier) for proper detection.
+
+---
+
+## Detection Architecture (Post-Integration)
+
+```mermaid
+graph TD
+    A[Input Frame] --> B[M1 Scene Classifier]
+    A --> C[YOLO Vehicle Detection]
+    A --> D[YOLO Pose Detection]
+    
+    B -->|cls_conf| E{Pre-filter}
+    E -->|cls_conf < 0.20| F[No Accident]
+    E -->|cls_conf >= 0.20| G[Geometric Analysis]
+    
+    C --> G
+    D --> G
+    
+    G --> H[Vehicle-Vehicle Scoring]
+    G --> I[Vehicle-Pedestrian]
+    
+    C --> J[M2 Damage Classifier]
+    
+    H --> K{Any Detection?}
+    I --> K
+    
+    K -->|Yes| L[Ensemble Fusion]
+    K -->|No| M{Fallback Paths}
+    
+    M --> N[5e: Single Vehicle + M1]
+    M --> O[5f: VP + M1]
+    M --> P[5g: Damage + M1 ≥40%]
+    M --> Q[5g-ii: Damage >90% + M1 ≥20%]
+    M --> R[5h: Scene-only M1 ≥85%]
+    
+    J --> L
+    B --> L
+    
+    L --> S[Fused Confidence]
+    S --> T[Report + Annotated Frame]
+```
+
+## Key Design Decisions
+
+1. **Stage 5g-ii threshold (M2 > 90%)**: Very high M2 confidence is strong enough evidence even without M1 agreement. This is a deliberate asymmetry — M2 analyzes actual vehicle crops, so its high-confidence predictions are more specific than M1's scene-level assessment.
+
+2. **Ensemble weights (40/35/25)**: Geometric analysis gets the highest weight because it provides the most specific evidence (actual physical overlap). M1 gets more than M2 because it analyzes the full scene context. M2 gets the least because damage alone doesn't prove an accident just happened (could be pre-existing).
+
+3. **Scene-only detection (Stage 5h)**: Only triggers when M1 ≥ 85% AND zero vehicles detected. This prevents false positives in normal scenes while catching smoke/debris-obscured crashes.

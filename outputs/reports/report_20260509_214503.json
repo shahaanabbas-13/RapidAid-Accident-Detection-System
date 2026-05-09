@@ -1,0 +1,78 @@
+{
+  "accident_detected": true,
+  "timestamp": "2026-05-09 21:45:03",
+  "source_frame": "data\\test_videos\\Acc video 3.mp4",
+  "timestamp_sec": 8.0,
+  "classifier_confidence_m1": 0.0,
+  "damage_score_m2": 0.0,
+  "fused_confidence": 0.36,
+  "detection_mode": "ensemble",
+  "total_vehicles_in_scene": 2,
+  "involved_vehicles": [
+    {
+      "type": "Car",
+      "confidence": 89.9,
+      "crash_score": 0.899,
+      "bbox": [
+        667,
+        304,
+        1043,
+        519
+      ]
+    },
+    {
+      "type": "Heavy Vehicle",
+      "confidence": 92.1,
+      "crash_score": 0.899,
+      "bbox": [
+        290,
+        133,
+        723,
+        427
+      ]
+    }
+  ],
+  "accident_zone": [
+    196,
+    95,
+    1280,
+    707
+  ],
+  "victims_in_zone": 3,
+  "victims": [
+    {
+      "id": 1,
+      "confidence": 71.2,
+      "status": "fallen",
+      "bbox": [
+        604,
+        497,
+        852,
+        589
+      ]
+    },
+    {
+      "id": 2,
+      "confidence": 66.7,
+      "status": "fallen",
+      "bbox": [
+        1098,
+        411,
+        1184,
+        555
+      ]
+    },
+    {
+      "id": 3,
+      "confidence": 43.1,
+      "status": "fallen",
+      "bbox": [
+        966,
+        488,
+        1135,
+        600
+      ]
+    }
+  ],
+  "annotated_frame": "C:\\Users\\abbas\\OneDrive\\Desktop\\AccidentDetection\\outputs\\annotated\\accident_20260509_214503.jpg"
+}

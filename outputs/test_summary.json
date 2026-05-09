@@ -1,0 +1,174 @@
+{
+  "m1_available": true,
+  "m2_available": true,
+  "m3_available": true,
+  "frame_results": [
+    {
+      "file": "Car Accident 3.png",
+      "detected": true,
+      "vehicles": 1,
+      "victims": 1,
+      "cls_conf": 0.96,
+      "max_damage": 0.975,
+      "fused": 0.845,
+      "scene_only": false,
+      "time_sec": 0.7
+    },
+    {
+      "file": "Car Accident 4.png",
+      "detected": true,
+      "vehicles": 3,
+      "victims": 0,
+      "cls_conf": 0.994,
+      "max_damage": 0.005,
+      "fused": 0.495,
+      "scene_only": false,
+      "time_sec": 0.4
+    },
+    {
+      "file": "Car Accident 5.png",
+      "detected": true,
+      "vehicles": 3,
+      "victims": 1,
+      "cls_conf": 0.996,
+      "max_damage": 0.944,
+      "fused": 0.847,
+      "scene_only": false,
+      "time_sec": 0.5
+    },
+    {
+      "file": "Car accident 2.jpg",
+      "detected": true,
+      "vehicles": 1,
+      "victims": 3,
+      "cls_conf": 0.426,
+      "max_damage": 0.48,
+      "fused": 0.573,
+      "scene_only": false,
+      "time_sec": 0.3
+    },
+    {
+      "file": "Car accident(6).png",
+      "detected": true,
+      "vehicles": 1,
+      "victims": 0,
+      "cls_conf": 0.301,
+      "max_damage": 0.97,
+      "fused": 0.605,
+      "scene_only": false,
+      "time_sec": 0.4
+    },
+    {
+      "file": "Car accident(8).png",
+      "detected": true,
+      "vehicles": 4,
+      "victims": 0,
+      "cls_conf": 0.757,
+      "max_damage": 0.964,
+      "fused": 0.79,
+      "scene_only": false,
+      "time_sec": 0.5
+    }
+  ],
+  "video_results": [
+    {
+      "file": "Acc Video 1.mp4",
+      "detected": false,
+      "timestamp_sec": null,
+      "frames_analyzed": 93,
+      "cls_conf": 0,
+      "max_damage": 0,
+      "fused": 0,
+      "m3_temporal": 0.678,
+      "time_sec": 24.0
+    },
+    {
+      "file": "Acc Video 2.mp4",
+      "detected": true,
+      "timestamp_sec": 8.0,
+      "frames_analyzed": 33,
+      "cls_conf": 0.167,
+      "max_damage": 0.975,
+      "fused": 0.665,
+      "m3_temporal": 0.807,
+      "time_sec": 6.1
+    },
+    {
+      "file": "Acc Video 5.mp4",
+      "detected": false,
+      "timestamp_sec": null,
+      "frames_analyzed": 58,
+      "cls_conf": 0,
+      "max_damage": 0,
+      "fused": 0,
+      "m3_temporal": 0.4,
+      "time_sec": 4.6
+    },
+    {
+      "file": "Acc Video 6.mp4",
+      "detected": true,
+      "timestamp_sec": 6.33,
+      "frames_analyzed": 28,
+      "cls_conf": 0.933,
+      "max_damage": 0.001,
+      "fused": 0.713,
+      "m3_temporal": 0.522,
+      "time_sec": 5.8
+    },
+    {
+      "file": "Acc Video 9.mp4",
+      "detected": false,
+      "timestamp_sec": null,
+      "frames_analyzed": 34,
+      "cls_conf": 0,
+      "max_damage": 0,
+      "fused": 0,
+      "m3_temporal": 0.48,
+      "time_sec": 9.3
+    },
+    {
+      "file": "Acc video 3.mp4",
+      "detected": false,
+      "timestamp_sec": null,
+      "frames_analyzed": 24,
+      "cls_conf": 0,
+      "max_damage": 0,
+      "fused": 0,
+      "m3_temporal": 0.387,
+      "time_sec": 2.4
+    },
+    {
+      "file": "Acc video 4.mp4",
+      "detected": true,
+      "timestamp_sec": 6.67,
+      "frames_analyzed": 26,
+      "cls_conf": 0.999,
+      "max_damage": 0.825,
+      "fused": 0.8,
+      "m3_temporal": 0.448,
+      "time_sec": 5.4
+    },
+    {
+      "file": "Acc video 7.mp4",
+      "detected": true,
+      "timestamp_sec": 10.24,
+      "frames_analyzed": 35,
+      "cls_conf": 0.995,
+      "max_damage": 0.771,
+      "fused": 1.0,
+      "m3_temporal": 0.578,
+      "time_sec": 8.4
+    },
+    {
+      "file": "Acc video 8.mp4",
+      "detected": true,
+      "timestamp_sec": 6.72,
+      "frames_analyzed": 33,
+      "cls_conf": 0.995,
+      "max_damage": 0.891,
+      "fused": 1.0,
+      "m3_temporal": 0.449,
+      "time_sec": 8.6
+    }
+  ]
+}

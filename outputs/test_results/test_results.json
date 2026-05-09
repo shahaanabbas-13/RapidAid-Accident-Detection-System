@@ -1,0 +1,244 @@
+{
+  "frame_results": [
+    {
+      "file": "Car Accident 3.png",
+      "detected": true,
+      "vehicles": 4,
+      "victims": 0,
+      "crash_scores": [
+        0.914,
+        0.914,
+        0.914,
+        0.914
+      ],
+      "damage_scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "time_sec": 1.26
+    },
+    {
+      "file": "Car Accident 4.png",
+      "detected": true,
+      "vehicles": 3,
+      "victims": 0,
+      "crash_scores": [
+        0.971,
+        0.971,
+        0.971
+      ],
+      "damage_scores": [
+        0,
+        0,
+        0
+      ],
+      "time_sec": 1.01
+    },
+    {
+      "file": "Car Accident 5.png",
+      "detected": true,
+      "vehicles": 4,
+      "victims": 1,
+      "crash_scores": [
+        0.685,
+        1.0,
+        1.0,
+        0.774
+      ],
+      "damage_scores": [
+        0,
+        0.997,
+        0.64,
+        0
+      ],
+      "time_sec": 0.85
+    },
+    {
+      "file": "Car accident 2.jpg",
+      "detected": true,
+      "vehicles": 1,
+      "victims": 3,
+      "crash_scores": [
+        0.76
+      ],
+      "damage_scores": [
+        0
+      ],
+      "time_sec": 0.64
+    },
+    {
+      "file": "Car accident(6).png",
+      "detected": true,
+      "vehicles": 1,
+      "victims": 0,
+      "crash_scores": [
+        0.944
+      ],
+      "damage_scores": [
+        0
+      ],
+      "time_sec": 0.49
+    },
+    {
+      "file": "Car accident(8).png",
+      "detected": true,
+      "vehicles": 4,
+      "victims": 0,
+      "crash_scores": [
+        1.0,
+        1.0,
+        0.905,
+        0.594
+      ],
+      "damage_scores": [
+        0.944,
+        0.626,
+        0,
+        0.849
+      ],
+      "time_sec": 0.76
+    }
+  ],
+  "video_results": [
+    {
+      "file": "Acc Video 1.mp4",
+      "detected": true,
+      "timestamp": 7.0,
+      "vehicles": 2,
+      "victims": 0,
+      "crash_scores": [
+        1.0,
+        1.0
+      ],
+      "frames_analyzed": 30,
+      "m3_score": 0.346,
+      "time_sec": 7.9
+    },
+    {
+      "file": "Acc Video 2.mp4",
+      "detected": true,
+      "timestamp": 9.67,
+      "vehicles": 1,
+      "victims": 0,
+      "crash_scores": [
+        1.0
+      ],
+      "frames_analyzed": 31,
+      "m3_score": 0.596,
+      "time_sec": 8.3
+    },
+    {
+      "file": "Acc Video 5.mp4",
+      "detected": true,
+      "timestamp": 6.67,
+      "vehicles": 2,
+      "victims": 0,
+      "crash_scores": [
+        0.974,
+        0.623
+      ],
+      "frames_analyzed": 30,
+      "m3_score": 0.398,
+      "time_sec": 9.1
+    },
+    {
+      "file": "Acc Video 6.mp4",
+      "detected": true,
+      "timestamp": 7.67,
+      "vehicles": 2,
+      "victims": 0,
+      "crash_scores": [
+        0.983,
+        0.652
+      ],
+      "frames_analyzed": 28,
+      "m3_score": 0.594,
+      "time_sec": 9.6
+    },
+    {
+      "file": "Acc Video 9.mp4",
+      "detected": true,
+      "timestamp": 7.67,
+      "vehicles": 4,
+      "victims": 0,
+      "crash_scores": [
+        0.669,
+        0.981,
+        1.0,
+        0.665
+      ],
+      "frames_analyzed": 30,
+      "m3_score": 0.433,
+      "time_sec": 12.3
+    },
+    {
+      "file": "Acc video 3.mp4",
+      "detected": true,
+      "timestamp": 8.0,
+      "vehicles": 2,
+      "victims": 3,
+      "crash_scores": [
+        0.899,
+        0.899
+      ],
+      "frames_analyzed": 24,
+      "m3_score": 0.365,
+      "time_sec": 7.7
+    },
+    {
+      "file": "Acc video 4.mp4",
+      "detected": true,
+      "timestamp": 6.67,
+      "vehicles": 3,
+      "victims": 0,
+      "crash_scores": [
+        0.985,
+        0.795,
+        1.0
+      ],
+      "frames_analyzed": 26,
+      "m3_score": 0.818,
+      "time_sec": 8.3
+    },
+    {
+      "file": "Acc video 7.mp4",
+      "detected": true,
+      "timestamp": 9.28,
+      "vehicles": 3,
+      "victims": 0,
+      "crash_scores": [
+        0.914,
+        0.914,
+        1.0
+      ],
+      "frames_analyzed": 31,
+      "m3_score": 0.846,
+      "time_sec": 10.1
+    },
+    {
+      "file": "Acc video 8.mp4",
+      "detected": true,
+      "timestamp": 10.22,
+      "vehicles": 2,
+      "victims": 2,
+      "crash_scores": [
+        0.687,
+        1.0
+      ],
+      "frames_analyzed": 38,
+      "m3_score": 0.87,
+      "time_sec": 11.6
+    }
+  ],
+  "summary": {
+    "frames_detected": 6,
+    "frames_total": 6,
+    "videos_detected": 9,
+    "videos_total": 9,
+    "total_detected": 15,
+    "total_tests": 15,
+    "accuracy_pct": 100.0
+  }
+}

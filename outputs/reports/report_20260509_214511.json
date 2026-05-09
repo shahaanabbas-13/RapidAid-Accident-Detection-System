@@ -1,0 +1,56 @@
+{
+  "accident_detected": true,
+  "timestamp": "2026-05-09 21:45:07",
+  "source_frame": "data\\test_videos\\Acc video 4.mp4",
+  "timestamp_sec": 6.67,
+  "classifier_confidence_m1": 0.503,
+  "damage_score_m2": 0.542,
+  "fused_confidence": 0.711,
+  "detection_mode": "ensemble",
+  "total_vehicles_in_scene": 3,
+  "involved_vehicles": [
+    {
+      "type": "Car",
+      "confidence": 92.9,
+      "crash_score": 0.985,
+      "bbox": [
+        250,
+        108,
+        390,
+        200
+      ]
+    },
+    {
+      "type": "Car",
+      "confidence": 94.4,
+      "crash_score": 0.795,
+      "bbox": [
+        434,
+        267,
+        661,
+        478
+      ]
+    },
+    {
+      "type": "Car",
+      "confidence": 87.2,
+      "crash_score": 1.0,
+      "bbox": [
+        163,
+        75,
+        332,
+        142
+      ],
+      "damage_score": 0.542
+    }
+  ],
+  "accident_zone": [
+    119,
+    44,
+    747,
+    452
+  ],
+  "victims_in_zone": 0,
+  "victims": [],
+  "annotated_frame": "C:\\Users\\abbas\\OneDrive\\Desktop\\AccidentDetection\\outputs\\annotated\\accident_20260509_214511.jpg"
+}

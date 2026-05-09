@@ -1,0 +1,69 @@
+{
+  "accident_detected": true,
+  "timestamp": "2026-05-09 21:45:31",
+  "source_frame": "data\\test_videos\\Acc video 8.mp4",
+  "timestamp_sec": 10.22,
+  "classifier_confidence_m1": 0.64,
+  "damage_score_m2": 1.0,
+  "fused_confidence": 0.874,
+  "detection_mode": "ensemble",
+  "total_vehicles_in_scene": 2,
+  "involved_vehicles": [
+    {
+      "type": "Motorcycle",
+      "confidence": 59.6,
+      "crash_score": 0.687,
+      "bbox": [
+        295,
+        147,
+        331,
+        193
+      ],
+      "damage_score": 0.025
+    },
+    {
+      "type": "Motorcycle",
+      "confidence": 83.2,
+      "crash_score": 1.0,
+      "bbox": [
+        0,
+        185,
+        137,
+        386
+      ],
+      "damage_score": 1.0
+    }
+  ],
+  "accident_zone": [
+    27,
+    115,
+    333,
+    421
+  ],
+  "victims_in_zone": 2,
+  "victims": [
+    {
+      "id": 1,
+      "confidence": 80.7,
+      "status": "trapped",
+      "bbox": [
+        306,
+        174,
+        360,
+        291
+      ]
+    },
+    {
+      "id": 2,
+      "confidence": 34.1,
+      "status": "trapped",
+      "bbox": [
+        14,
+        213,
+        77,
+        324
+      ]
+    }
+  ],
+  "annotated_frame": "C:\\Users\\abbas\\OneDrive\\Desktop\\AccidentDetection\\outputs\\annotated\\accident_20260509_214533.jpg"
+}
