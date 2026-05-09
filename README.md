@@ -99,3 +99,6 @@ To improve accuracy with custom-trained models:
 1. Use the training notebook in `notebooks/training.ipynb`
 2. Train on accident datasets (CADP, DoTA, CCD)
 3. Download trained weights to `weights/` directory
+
+# RapidAid-Accident-Detection-System
+Vision-Based Automated Accident Detection and Victim Condition Assessment
